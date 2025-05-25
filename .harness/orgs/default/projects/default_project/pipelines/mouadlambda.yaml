@@ -28,6 +28,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       terraform init
+                      export aws.env
                       terraform plan
                       terraform apply -auto-approve
         tags: {}
