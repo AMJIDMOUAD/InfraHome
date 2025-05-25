@@ -1,0 +1,33 @@
+pipeline:
+  name: mouadlambda
+  identifier: mouadlambda
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: lambda
+        identifier: lambda
+        description: ""
+        type: IACM
+        spec:
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          workspace: infraLambda
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      terraform init
+                      terraform plan
+                      terraform apply -auto-approve
+        tags: {}
